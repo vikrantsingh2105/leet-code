@@ -1,0 +1,26 @@
+#include <vector>
+
+using namespace std;
+
+class Solution {
+public:
+    vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
+        int maxCandies=0;
+
+        for(int candy : candies){
+            if(candy > maxCandies){
+                maxCandies=candy;
+            }
+        }
+
+        vector<bool> result(candies.size());
+        int i=0;
+
+        for(int candy : candies){
+            result[i]=(candy + extraCandies >= maxCandies);
+            i++;
+        }
+
+        return result;
+      }
+};
