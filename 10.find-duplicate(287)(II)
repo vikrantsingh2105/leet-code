@@ -1,0 +1,28 @@
+/* correct solution acc. to condition given 
+  Slow-fast pointer approach in this we imagine array as a LL
+  in which we will see ==[element of array = next_node]
+                       ==[orginal index = node]    
+  in this TC = O(n) and SC = O(1)                               */ 
+
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int slow = nums[0] , fast = nums[0];
+
+        do{
+            slow = nums[slow]; //+1
+            fast = nums[nums[fast]]; //+2
+        }while(slow != fast);
+
+        slow = nums[0];
+
+        while(slow != fast){
+            slow = nums[slow]; //+1
+            fast = nums[fast]; //+1
+        }
+    
+    return slow;
+
+    }
+};
