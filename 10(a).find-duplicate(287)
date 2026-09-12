@@ -1,0 +1,20 @@
+/* this approach is very simple using set but in question it is given
+   we have to solve it without modifying the nums so it not satisfy
+   the given conditon in question but it can be done like this also
+   TC = O(n)  SC = O(n)                                                */
+
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        unordered_set<int> s;
+
+        for( int val : nums){
+            if(s.find(val) != s.end()){
+                return val;
+            }
+        s.insert(val);
+        }
+    return -1;
+    }
+};
