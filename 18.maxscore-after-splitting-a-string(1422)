@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int maxScore(string s) {
+        int n = s.length();
+        int max_sum = 0;
+        for(int i = 0 ; i<n-1 ; i++){
+
+            string s1=s.substr(0,i+1);
+
+            string s2=s.substr(i+1);
+
+            int s1zero = count(s1.begin(),s1.end(),'0');
+            int s2one = count(s2.begin(),s2.end(),'1');
+
+            max_sum=max(max_sum , s1zero + s2one );
+        }
+    return max_sum;
+    }
+};
