@@ -1,0 +1,17 @@
+// My solution
+class Solution {
+public:
+    string shiftingLetters(string s, vector<int>& shifts) {
+        int n = shifts.size();
+        vector<int> suffix(n);
+        int sum=0;
+        for(int i = n-1 ; i >=0 ; i-- ){
+            sum+=shifts[i];
+            suffix[i] = sum;
+        }
+        for(int i = 0 ; i<n ; i++){
+            s[i]=char(int(s[i])+ suffix[i]);
+        }
+    return s;
+    }
+};
