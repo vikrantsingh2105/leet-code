@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> getSumAbsoluteDifferences(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> pnums(n);
+        vector<int> ans;
+
+        pnums[0] = nums[0];
+        for(int i = 1; i < n; i++){
+            pnums[i] = nums[i] + pnums[i-1];
+        }
+        for(int i = 0; i < n; i++){
+            int leftSum = 0;
+            int rightSum = 0;
+            leftSum = i == 0 ? nums[i] *i : nums[i] *i - pnums[i-1];
+            rightSum = pnums[n-1] - pnums[i] - nums[i]*(n-i-1);
+            ans.push_back(abs(leftSum+rightSum));
+        }
+
+        return ans;
+    }
+};
